@@ -21,13 +21,13 @@ RUN npm --prefix plugins prune --production
 
 # Build frontend
 COPY ./frontend/package.json ./frontend/package-lock.json ./frontend/
-RUN npm --prefix frontend install
+RUN npm --prefix frontend install --force
 COPY ./frontend/ ./frontend/
 RUN npm --prefix frontend run build
 
 # Build server
 COPY ./server/package.json ./server/package-lock.json ./server/
-RUN npm --prefix server install
+RUN npm --prefix server install --force
 COPY ./server/ ./server/
 RUN npm install -g @nestjs/cli
 RUN npm --prefix server run build

@@ -21,9 +21,9 @@ RUN npm --prefix plugins prune --production
 
 # Build frontend
 COPY ./frontend/package.json ./frontend/package-lock.json  ./frontend/
-RUN npm --prefix frontend install --only=production
+RUN npm --prefix frontend install --only=production --force
 COPY ./frontend ./frontend
-RUN npm --prefix frontend rebuild node-sass
+RUN npm --prefix frontend install -g sass
 RUN npm --prefix frontend run build
 
 FROM openresty/openresty:1.21.4.1-buster-fat

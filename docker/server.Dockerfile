@@ -21,7 +21,7 @@ RUN npm --prefix plugins prune --production
 
 # Building ToolJet server
 COPY ./server/package.json ./server/package-lock.json ./server/
-RUN npm --prefix server install --only=production
+RUN npm --prefix server install --only=production --force
 COPY ./server/ ./server/
 RUN npm --prefix server run build
 
