@@ -1,7 +1,7 @@
 # pull official base image
-FROM node:14.17.3-buster AS builder
+FROM node:16.13.1-buster AS builder
 
-RUN npm i -g npm@7.20.0
+RUN npm i -g npm@8.6.0
 
 # set working directory
 WORKDIR /app
@@ -25,7 +25,7 @@ RUN npm --prefix frontend install --only=production
 COPY ./frontend ./frontend
 RUN npm --prefix frontend run build
 
-FROM openresty/openresty:1.19.9.1rc1-buster-fat
+FROM openresty/openresty:1.21.4.1-buster-fat
 
 RUN apt-get update && apt-get -y install --no-install-recommends wget \
 gnupg ca-certificates apt-utils curl luarocks \
